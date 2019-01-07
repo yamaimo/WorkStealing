@@ -1,0 +1,4 @@
+*.o
+*.swp
+merge_sort
+split_merge_sort
