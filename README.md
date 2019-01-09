@@ -10,10 +10,22 @@ Use `make`.
 
 ### merge_sort
 
-simple merge sort using only main thread.
+A simple merge sort using only main thread.
 
 ### split_merge_sort
 
-merge sort which splits array for each worker thread at first 
+A merge sort which splits array for each worker thread at first 
 and merges split arrays after each worker thread sorted its array.
+
+### fork_join_merge_sort
+
+A merge sort using fork-join: one thread creates another thread (fork), 
+the created thread sorts half of the array, and the original thread 
+sorts the rest of array.
+The original thread then waits for the created thread (join) 
+and merges the sorted arrays.
+
+This program may not work correctly for large array because too many 
+threads will be created.
+To solve this issue, work stealing algorithm is required.
 
