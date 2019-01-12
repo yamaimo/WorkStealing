@@ -17,6 +17,12 @@ A simple merge sort using only main thread.
 A merge sort which splits array for each worker thread at first 
 and merges split arrays after each worker thread sorted its array.
 
+### post_fetch_merge_sort
+
+A merge sort using producer-consumer: a producer thread creates tasks 
+and post them into the task deque, and each consumer thread fetches 
+a task from the task deque and executes the task.
+
 ### fork_join_merge_sort
 
 A merge sort using fork-join: one thread creates another thread (fork), 
