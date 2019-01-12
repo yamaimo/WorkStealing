@@ -3,35 +3,48 @@
 #include <stdbool.h>
 #include <sys/time.h>
 
-#include "util.h"
-#include "sort.h"
+#include "array.h"
 
 int main(int argc, char** argv)
 {
-    int* array;
-    int length;
+    // read array
 
-    read_array(&array, &length);
-    printf("length is %d\n", length);
-    print_array(array, length);
+    FILE* input = (argc > 1) ? fopen(argv[1], "r") : stdin;
+    if (input == NULL)
+    {
+        fprintf(stderr, "failed to open file %s.", argv[1]);
+        exit(1);
+    }
+
+    array_t* array = array_from_input(input);
+
+    if (input != stdin)
+    {
+        fclose(input);
+    }
+
+    printf("length is %d\n", array->length);
+    array_print(array);
+
+    // sort
 
     struct timeval begin;
     struct timeval end;
 
     gettimeofday(&begin, NULL);
-    sort(array, length);
+    array_sort(array);
     gettimeofday(&end, NULL);
 
-    const char* result = check_sorted(array, length)
-        ? "sorted."
-        : "not sorted.";
-    printf("%s\n", result);
-    print_array(array, length);
-
+    const char* result = array_is_sorted(array) ? "sorted." : "not sorted.";
     double elapsed = (double)(end.tv_sec - begin.tv_sec);
     elapsed += (double)(end.tv_usec - begin.tv_usec) / (1000.0 * 1000.0);
+
+    // output result
+
+    printf("%s\n", result);
+    array_print(array);
     printf("elapsed: %.3lf [msec]\n", elapsed);
 
-    free(array);
+    array_delete(array);
     return 0;
 }

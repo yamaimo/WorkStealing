@@ -29,3 +29,6 @@ This program may not work correctly for large array because too many
 threads will be created.
 To solve this issue, work stealing algorithm is required.
 
+### make_data.rb
+
+A Ruby script to create input data.
