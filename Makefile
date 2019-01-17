@@ -19,4 +19,4 @@ fifo_merge_sort: main.o array.o task.o task_deque.o fifo_thread_pool.o fifo_merg
 	clang -c $<
 
 clean:
-	-rm merge_sort split_merge_sort fork_join_merge_sort post_fetch_merge_sort *.o
+	-rm merge_sort split_merge_sort fork_join_merge_sort post_fetch_merge_sort fifo_merge_sort *.o
