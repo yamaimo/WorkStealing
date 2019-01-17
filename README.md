@@ -43,7 +43,8 @@ Any idle worker thread, which has no task or waits for other task,
 fetches a task from the top of the task queue.
 
 Current merge sort implementation uses recursive calls, 
-so the stack size of the worker thread may be too large.
+so the stack size of the worker thread may be too small.
+In such case, make the stack size or the number of workers large.
 
 ### make_data.rb
 
