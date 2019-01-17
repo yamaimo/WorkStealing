@@ -35,6 +35,16 @@ This program may not work correctly for large array because too many
 threads will be created.
 To solve this issue, work stealing algorithm is required.
 
+### fifo_merge_sort
+
+A merge sort using a thread pool which has a FIFO task queue.
+When forking a task, the task is pushed into the bottom of the task queue.
+Any idle worker thread, which has no task or waits for other task, 
+fetches a task from the top of the task queue.
+
+Current merge sort implementation uses recursive calls, 
+so the stack size of the worker thread may be too large.
+
 ### make_data.rb
 
 A Ruby script to create input data.

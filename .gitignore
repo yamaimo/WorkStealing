@@ -4,3 +4,4 @@ merge_sort
 split_merge_sort
 fork_join_merge_sort
 post_fetch_merge_sort
+fifo_merge_sort
