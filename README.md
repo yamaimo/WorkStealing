@@ -46,6 +46,19 @@ Current merge sort implementation uses recursive calls,
 so the stack size of the worker thread may be too small.
 In such case, make the stack size or the number of workers large.
 
+### work_stealing_merge_sort
+
+A merge sort using a thread pool where each worker has its own task deque.
+When forking a task, the task is pushed into the bottom of the worker's deque.
+Any idle worker thread, which has no task or waits for other task, 
+fetches a task from the bottom of the worker's deque.
+If the worker's deque is empty, the worker will steal a task from the top of 
+other worker's deque.
+
+Current merge sort implementation uses recursive calls, 
+so the stack size of the worker thread may be too small.
+In such case, make the stack size or the number of workers large.
+
 ### make_data.rb
 
 A Ruby script to create input data.

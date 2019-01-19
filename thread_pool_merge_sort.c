@@ -81,6 +81,7 @@ static void* sort_task(void* arg)
         sort_task(&stack_data->second_task_arg);
 
         thread_pool_join(thread_pool, stack_data->forked_task);
+        task_delete(stack_data->forked_task);
 
         merge_array(&stack_data->first_array, &stack_data->second_array);
 
@@ -108,6 +109,7 @@ static void* sort_task(void* arg)
         sort_task(&second_task_arg);
 
         thread_pool_join(thread_pool, forked);
+        task_delete(forked);
 
         merge_array(&first_array, &second_array);
 #endif
