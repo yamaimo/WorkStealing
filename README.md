@@ -4,7 +4,20 @@ This repository provides merge sort demo with work stealing algorithm.
 
 ## How to Build
 
-Use `make`.
+You need 'CMake' to build.
+Download and install 'CMake' if needed.
+
+    https://cmake.org
+
+Make a build directory, generate a Makefile with 'CMake', and run 
+`make` command as follows:
+
+```sh
+mkdir build
+cd build
+cmake ..
+make
+```
 
 ## Programs
 
